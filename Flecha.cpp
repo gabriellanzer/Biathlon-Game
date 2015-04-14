@@ -103,7 +103,7 @@ void Flecha::Atualizar()
 		{
 			rot = -asin(velocidadeGravidade / 10) * 180.0 / PI; //E no horário se estiver descendo
 		}
-		x += 8.0;
+		x += 10.0;
 	}
 	else
 	{
@@ -122,7 +122,7 @@ void Flecha::Atirar(int _x, int _y)
 {
 	//Definimos todas as variáveis em seus estados padrões e ativamos a flecha
 	varVeloc = 0;
-	velocidadeGravidade = 0;
+	velocidadeGravidade = -2;
 	rot = 0.0;
 	x = _x;
 	y = _y;
