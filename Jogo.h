@@ -1,5 +1,9 @@
 #pragma once
 #include "libUnicornio.h"
+#include "Flecha.h"
+#include "Personagem.h"
+#include "Obstaculo.h"
+#include "Inimigo.h"
 
 class Jogo
 {
@@ -11,5 +15,8 @@ public:
 	void finalizar();
 
 	void executar();
+
+private:
+	Flecha f;
 };
 
