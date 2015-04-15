@@ -125,7 +125,7 @@ void Flecha::Atirar(int _x, int _y, float _force)
 	rot = atan((float)(mouse.y - _y) / (float)(mouse.x - _x))* 180.0 / PI;
 	compVertical = sin(rot * PI/180.0) * 10;
 	varVert = compVertical / 10.0;
-	impulso = _force;
+	impulso = _force*cos(rot * PI/180.0);
 	x = _x;
 	y = _y;
 	noAr = true;
