@@ -78,39 +78,40 @@ void Flecha::Desenhar()
 
 void Flecha::Atualizar()
 {
-	//if (true/*uniColisao()*/)
-	//{
-	//	noAr = false;
-	//}
 	float yTemp = y; //Criamos uma variável temporária para checarmos se o objeto está subindo ou descendo
 	if (noAr) //Checamos se a flecha continua no ar
 	{
 		//Aceleramos a velocidade da Gravidade
-		if (velocidadeGravidade >= 10) //Como na vida real, todos os objetos tem uma velocidade máxima de queda-livre (Força resultante = 0), no nosso caso será 10px/frame ou 300px/s à 30FPS
+		if (compVertical >= 10) //Como na vida real, todos os objetos tem uma velocidade máxima de queda-livre (Força resultante = 0), no nosso caso será 10px/frame ou 300px/s à 30FPS
 		{
-			velocidadeGravidade = 10; //Então definimos a velocidade da gravidade constante
+			compVertical = 10; //Então definimos a velocidade da gravidade constante
+		}
+		else if (compVertical < -10)
+		{
+			compVertical = -10;
 		}
 		else
 		{
-			velocidadeGravidade += 0.1; //Caso contrário, continuamos acelerando
+			compVertical += 0.1; //Caso contrário, continuamos acelerando
 		}
 
-		if (varVeloc > 0) //Checamos se o objeto está subindo ou descendo
+		rot = asin(compVertical / 10.0) * 180.0 / PI; //Fazemos ela girar de acordo com a velocidade vertical da gravidade
+
+		if (rot <= 90)
 		{
-			rot = asin(velocidadeGravidade / 10) * 180.0 / PI; //Fazemos ele girar no sentido anti-horário se estiver subindo
+			x += impulso*cos(rot * PI / 180.0);
 		}
-		else
+		else if (rot >= -90)
 		{
-			rot = -asin(velocidadeGravidade / 10) * 180.0 / PI; //E no horário se estiver descendo
+			x += impulso*cos(rot * PI / 180.0);
 		}
-		x += 10.0;
 	}
 	else
 	{
-		velocidadeGravidade = 0; //Caso a flecha não esteja mais no ar, devemos parar de aplicar a gravidade
+		compVertical = 0; //Caso a flecha não esteja mais no ar, devemos parar de aplicar a gravidade
 	}
-	y += velocidadeGravidade; //Somando a velocidade da gravidade ao nosso Y, fazemos a flecha descer ou subir de forma acelerada
-	varVeloc = y - yTemp; //Calculamos se o objeto está descendo ou subindo pela variação de Y ao final do frame
+	y += compVertical; //Somando a velocidade da gravidade ao nosso Y, fazemos a flecha descer ou subir de forma acelerada
+	varVert = y - yTemp; //Calculamos se o objeto está descendo ou subindo pela variação de Y ao final do frame
 }
 
 void Flecha::Finalizar()
@@ -118,14 +119,20 @@ void Flecha::Finalizar()
 	recursos.descarregarSpriteSheet(spriteName);
 }
 
-void Flecha::Atirar(int _x, int _y)
+void Flecha::Atirar(int _x, int _y, float _force)
 {
 	//Definimos todas as variáveis em seus estados padrões e ativamos a flecha
-	varVeloc = 0;
-	velocidadeGravidade = -2;
-	rot = 0.0;
+	rot = atan((float)(mouse.y - _y) / (float)(mouse.x - _x))* 180.0 / PI;
+	compVertical = sin(rot * PI/180.0) * 10;
+	varVert = compVertical / 10.0;
+	impulso = _force;
 	x = _x;
 	y = _y;
 	noAr = true;
 	ativo = true;
+}
+
+Sprite* Flecha::getSprite()
+{
+	return &arrowSprite;
 }

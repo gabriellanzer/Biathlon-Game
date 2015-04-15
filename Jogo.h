@@ -17,7 +17,8 @@ public:
 	void executar();
 
 private:
-	Flecha flecha[7];
+	Flecha flecha[14];
+	float force;
 	int flechaCont;
 };
 

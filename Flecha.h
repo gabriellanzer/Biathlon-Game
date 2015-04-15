@@ -25,11 +25,13 @@ public:
 	void Atualizar();
 	void Finalizar();
 
-	void Atirar(int _x, int _y);
+	void Atirar(int _x, int _y, float _force);
+
+	Sprite* getSprite();
 
 private:
 	int x, y; //Posição
-	float rot, velocidadeGravidade, varVeloc /*Define a variação na velocidade no eixo Y*/;
+	float rot, compVertical, compHorizontal, varVert /*Define a variação na velocidade no eixo Y*/, impulso /*Define a força inicial de lançamento*/;
 	Sprite arrowSprite;
 	string spriteName;
 	bool noAr, ativo;
