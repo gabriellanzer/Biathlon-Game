@@ -1,5 +1,4 @@
 #include "Flecha.h"
-#include "ControladorDeFisica.h"
 #include <math.h>
 
 #define PI 3.14159265 //Definimos o valor de PI, poderia ser feito por uma variável também
