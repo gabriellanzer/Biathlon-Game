@@ -97,7 +97,7 @@ void Flecha::Atualizar()
 
 		rot = asin(compVertical / 10.0) * 180.0 / PI; //Fazemos ela girar de acordo com a velocidade vertical da gravidade
 
-		if (rot <= 90)
+		if (rot <= 90) //Restringindo a ação do Impulso dentro do intervalo de 90 e -90 graus.
 		{
 			x += impulso*cos(rot * PI / 180.0);
 		}
@@ -123,11 +123,15 @@ void Flecha::Atirar(int _x, int _y, float _force)
 {
 	//Definimos todas as variáveis em seus estados padrões e ativamos a flecha
 	rot = atan((float)(mouse.y - _y) / (float)(mouse.x - _x))* 180.0 / PI;
-	compVertical = sin(rot * PI/180.0) * 10;
-	varVert = compVertical / 10.0;
-	impulso = _force*cos(rot * PI/180.0);
+	compVertical = _force * sin(rot * PI/180.0) / 3.0; //Usamos SENO para projetar o impulso na vertical
+	varVert = compVertical / 10.0; //Definimos uma variação inicial da vertical, apenas o sinal importa na realidade
+	impulso = _force * cos(rot * PI/180.0); //Usamos COSSENO para projetar o impulso na horizontal
+
+	//Definimos a posição de Spawn da flecha
 	x = _x;
 	y = _y;
+
+	//Definimos que a flecha foi lançada
 	noAr = true;
 	ativo = true;
 }
