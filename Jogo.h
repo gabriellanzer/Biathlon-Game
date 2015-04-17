@@ -4,6 +4,7 @@
 #include "Personagem.h"
 #include "Obstaculo.h"
 #include "Inimigo.h"
+#include "Mira.h"
 
 class Jogo
 {
@@ -18,7 +19,8 @@ public:
 
 private:
 	Flecha flecha[14];
+	Mira particulaMira[16];
 	float force;
-	int flechaCont;
+	int flechaCont, particulasCont;
 };
 

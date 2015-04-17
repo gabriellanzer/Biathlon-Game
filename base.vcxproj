@@ -101,6 +101,7 @@
     <ClCompile Include="Inimigo.cpp" />
     <ClCompile Include="Jogo.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mira.cpp" />
     <ClCompile Include="Obstaculo.cpp" />
     <ClCompile Include="Personagem.cpp" />
   </ItemGroup>
@@ -108,6 +109,7 @@
     <ClInclude Include="Flecha.h" />
     <ClInclude Include="Inimigo.h" />
     <ClInclude Include="Jogo.h" />
+    <ClInclude Include="Mira.h" />
     <ClInclude Include="Obstaculo.h" />
     <ClInclude Include="Personagem.h" />
   </ItemGroup>
