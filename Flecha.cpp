@@ -115,29 +115,18 @@ void Flecha::Atualizar()
 		}
 		else
 		{
-			compHorizontal -= 0.1 * sin(rot * PI/180); //Definimos o atrito conforme
+			compHorizontal -= 0.1 * cos(rot * PI/180); //Definimos o atrito conforme o ângulo da flecha
 			compHorizontal -= acelVento;
 		}
 
-		if (cos(rot * PI/180) > 0)
+		if (compHorizontal > 0)
 		{
 			rot = atan((float)compVertical / (float)compHorizontal) * 180.0 / PI;
 		}
 		else
 		{
-			rot = (atan((float)compVertical / (float)compHorizontal) * 180.0 / PI) + 180;
+			rot = (atan((float)compVertical / (float)compHorizontal) * 180.0 / PI) -180;
 		}
-
-		//rot = asin(compVertical / 10.0) * 180.0 / PI; //Fazemos ela girar de acordo com a velocidade vertical da gravidade
-
-		//if (rot <= 90) //Restringindo a ação do Impulso dentro do intervalo de 90 e -90 graus.
-		//{
-		//	x += compHorizontal*cos(rot * PI / 180.0);
-		//}
-		//else if (rot >= -90)
-		//{
-		//	x += compHorizontal*cos(rot * PI / 180.0);
-		//}
 	}
 	else
 	{
