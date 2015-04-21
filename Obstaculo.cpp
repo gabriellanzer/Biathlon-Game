@@ -62,4 +62,14 @@ void Obstaculo::Iniciar(string _name, string spritesheetpath)
 		recursos.carregarSpriteSheet(_name, spritesheetpath);
 	}
 	sprite.setSpriteSheet(_name);
+
+	ativo = true;
+	x = 0;
+	y = 0;
+	rotation = 0;
+}
+
+Sprite* Obstaculo::getSprite()
+{
+	return &sprite;
 }

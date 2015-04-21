@@ -2,10 +2,12 @@
 
 Jogo::Jogo()
 {
+
 }
 
 Jogo::~Jogo()
 {
+
 }
 
 void Jogo::inicializar()
@@ -23,7 +25,10 @@ void Jogo::inicializar()
 	{
 		particulaMira[i].Inicializar("Particula", "data/Sprites/AimingBall.png", 1, 1);
 	}
-
+	ground.Iniciar("Chao", "data/Sprites/GroundTest.png");
+	ground.setRot(0);
+	ground.setX(ground.getSprite()->getLargura()/2.0);
+	ground.setY(janela.getAlturaTela() - 100);
 	//	O resto da inicialização vem aqui!
 	//	...
 }
@@ -98,6 +103,11 @@ void Jogo::executar()
 
 		for (int i = 0; i < 14; i++) //Fazer um loop por todas as flechas checando se estão ativas e atualizando e desenhando elas
 		{
+			if (uniColisao(flecha[i].getSprite(), flecha[i].getX(), flecha[i].getY(), flecha[i].getRot(), ground.getSprite(), ground.getX(), ground.getY(), ground.getRot()))
+			{
+				flecha[i].setNoAr(false);
+			}
+
 			if (flecha[i].getAtiva())
 			{
 				flecha[i].Atualizar();
@@ -113,6 +123,7 @@ void Jogo::executar()
 				particulaMira[i].Desenhar();
 			}
 		}
+		ground.Desenhar();
 
 		uniTerminarFrame();
 	}

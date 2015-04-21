@@ -31,5 +31,7 @@ public:
 	void Desenhar();
 	void Atualizar();
 
+	Sprite* getSprite();
+
 	void Iniciar(string _name, string spritesheetpath);
 };

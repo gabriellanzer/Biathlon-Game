@@ -20,6 +20,7 @@ public:
 private:
 	Flecha flecha[14];
 	Mira particulaMira[16];
+	Obstaculo ground;
 	float force;
 	int flechaCont, particulasCont;
 };

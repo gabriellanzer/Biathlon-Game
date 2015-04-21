@@ -20,6 +20,9 @@ public:
 	bool getAtiva();
 	void setAtiva(bool b);
 
+	bool getNoAr();
+	void setNoAr(bool b);
+
 	void Inicializar(string name, string path, int nAnims, int nFrames);
 	void Desenhar();
 	void Atualizar();

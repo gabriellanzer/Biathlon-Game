@@ -43,6 +43,16 @@ void Flecha::setAtiva(bool b)
 	ativo = b;
 }
 
+bool Flecha::getNoAr()
+{
+	return noAr;
+}
+
+void Flecha::setNoAr(bool b)
+{
+	noAr = b;
+}
+
 float Flecha::getRot()
 {
 	return rot;
