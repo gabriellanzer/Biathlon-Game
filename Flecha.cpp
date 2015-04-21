@@ -122,6 +122,7 @@ void Flecha::Atirar(int _x, int _y, float _force)
 {
 	//Definimos todas as variáveis em seus estados padrões e ativamos a flecha
 	rot = atan((float)(mouse.y - _y) / (float)(mouse.x - _x))* 180.0 / PI;
+	
 	compVertical = _force * sin(rot * PI/180.0) / 3.0; //Usamos SENO para projetar o impulso na vertical
 	varVert = compVertical / 10.0; //Definimos uma variação inicial da vertical, apenas o sinal importa na realidade
 	impulso = _force * cos(rot * PI/180.0); //Usamos COSSENO para projetar o impulso na horizontal
