@@ -34,7 +34,7 @@ public:
 
 private:
 	int x, y; //Posição
-	float rot, compVertical, compHorizontal, varVert /*Define a variação na velocidade no eixo Y*/, impulso /*Define a força inicial de lançamento*/;
+	float rot, compVertical, compHorizontal, varVert /*Define a variação na velocidade no eixo Y*/, acelVento;
 	Sprite arrowSprite;
 	string spriteName;
 	bool noAr, ativo;

@@ -56,7 +56,6 @@ void Jogo::executar()
 	while(!teclado.soltou[TECLA_ESC] && !aplicacao.sair)
 	{
 		uniIniciarFrame();
-
 		//----------------DEBUGING-----------------//
 		uniDepurar("test ", atan((float) (mouse.y - janela.getAlturaTela()/2)/(float) (mouse.x - janela.getLarguraTela()/20))* 180.0/PI);
 		uniDepurar("force ", force);
